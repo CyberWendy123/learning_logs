@@ -19,6 +19,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
+# My settings - p447 
+LOGIN_URL = '/users/login/'
+# Settings for django-boostrap3 - p457 
+BOOTSTRAP3 = {
+    'include_jquery' : True, 
+}
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '$f@)f@_%qas)82axi6^qujsv-237tptlx+_$elnrs251%3%kv8'
 
@@ -38,8 +45,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Third paty apps 
+    'bootstrap3', 
+
     # My Apps 
     'learning_logs', 
+    'users', 
 
 ]
 
