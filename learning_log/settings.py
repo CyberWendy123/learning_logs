@@ -25,6 +25,23 @@ LOGIN_URL = '/users/login/'
 BOOTSTRAP3 = {
     'include_jquery' : True, 
 }
+# Heroku settings - p469 
+if os.getcwd() == '/app': 
+    import dj_database_url 
+    DATABASES = {
+        'default': dj_database_url.config(default='postgres://localhost')
+    }
+    # Honor the 'X-Forwarded-Proto' header for request.is_secure(). 
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARD_PROTO', 'https')
+    # Allow all the host headers 
+    ALLOWED_HOSTS = ['$']
+    # static asset configuration 
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    STATIC_ROOT = 'staticfiles'
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, 'static'), 
+        )
+
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '$f@)f@_%qas)82axi6^qujsv-237tptlx+_$elnrs251%3%kv8'
